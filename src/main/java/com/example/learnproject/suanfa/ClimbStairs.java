@@ -49,4 +49,22 @@ public class ClimbStairs {
         System.out.println(climbStairs(8));
         System.out.println(climbStairs1(8));
     }
+
+    //记忆化递归
+    public int climbStairs2(int n) {
+        int[] memo=new int[n+1];
+        return memoStair(n,memo);
+    }
+    private int memoStair(int n,int[] memo)
+    {
+        if(memo[n]>0){
+            return memo[n];
+        }
+        if(n<=2){
+            memo[n]=n;
+        }else{
+            memo[n]=memoStair(n-1,memo)+memoStair(n-2,memo);}
+        return memo[n];
+    }
+
 }
