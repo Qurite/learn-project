@@ -1,6 +1,9 @@
 package com.example.learnproject.suanfa;
 
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * @author ：majingyu
  * @date ：Created in 2021/9/24 20:26
@@ -46,7 +49,17 @@ public class ClimbStairs {
 
 
     public static void main(String[] args) {
-        System.out.println(climbStairs(8));
-        System.out.println(climbStairs1(8));
+        long applyRefundAmount = 7l;
+        long paidAmount = 21l;
+        BigDecimal bonusPoint = new BigDecimal(20.0);
+        System.out.println(new BigDecimal(applyRefundAmount));
+        System.out.println(new BigDecimal(paidAmount));
+        System.out.println(new BigDecimal(applyRefundAmount)
+                .divide(new BigDecimal(paidAmount),2,BigDecimal.ROUND_HALF_UP));
+        BigDecimal bucklePointPoint = new BigDecimal(applyRefundAmount)
+                .divide(new BigDecimal(paidAmount),2,BigDecimal.ROUND_HALF_UP)
+                //*订单子单奖励积分值
+                .multiply(bonusPoint).setScale(0, RoundingMode.DOWN);
+        System.out.println(bucklePointPoint);
     }
 }
